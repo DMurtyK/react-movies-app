@@ -6,9 +6,32 @@ import Modal from 'react-modal';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { register } from '../../serviceWorker';
+import { transform } from '@babel/core';
+import Typography from '@material-ui/core/Typography';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+import { tsPropertySignature } from '@babel/types';
 
 
 
+const customStyles = {
+    content : {
+        top:'50%',
+        left:'50%',
+        right:'auto',
+        buttom:'auto',
+        marginRight:'-50%',
+        transform:'translate(-50%,-50%)'
+    }
+}
+const tabContainer = function(props) {
+   return (
+       <Typography component = "div" style = {{padding:0}}>
+       {props.children}
+       </Typography>
+   );
+}
 class Header extends Component {
     constructor() {
         super();
@@ -40,14 +63,31 @@ class Header extends Component {
                         Login
                     </Button>
                 </div>
-                <Modal ariaHideApp={false} isOpen={this.state.modalIsOpen} contentLabel="Login"
-                    onRequestClose={this.closeModalHandler}>
+                <Modal 
+                ariaHideApp={false} 
+                isOpen={this.state.modalIsOpen} 
+                contentLabel="Login"
+                onRequestClose={this.closeModalHandler}
+                style ={customStyles}
+                >
 
                     <Tabs value={this.state.value} onChange = {this.tabChangeHandler}>
                         <Tab label="Login" />
                         <Tab label="Register" />
 
                     </Tabs>
+                    <tabContainer>
+                    <FormControl required>
+                    <InputLabel htmlFor = "username">Username</InputLabel>
+                    <Input id = "username" type = "text" />
+                    </FormControl>
+                    <br />
+                    <FormControl>
+                    <InputLabel htmlFor = "password">Password</InputLabel>
+                    <Input id = "password" type = "password" />
+                    </FormControl>
+                    
+                    </tabContainer>
 
                 </Modal>
             </header>
