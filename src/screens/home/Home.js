@@ -15,10 +15,11 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import  Checkbox  from '@material-ui/core/Checkbox';
+import Checkbox from '@material-ui/core/Checkbox';
 import ListItemText from '@material-ui/core/ListItemText';
 import artists from '../../common/artists';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     root: {
@@ -66,7 +67,7 @@ class Home extends Component {
         this.setState({ movieName: event.target.value });
     }
 
-    genreSelectHandler = event =>{
+    genreSelectHandler = event => {
         this.setState({ genres: event.target.value });
     }
     artistSelectHandler = event => {
@@ -145,12 +146,12 @@ class Home extends Component {
                                                 <ListItemText primary={genre.name} />
                                             </MenuItem>
                                         ))}
-                                     </Select>   
+                                    </Select>
 
 
-                               </FormControl>     
-                               
-                               <FormControl className={classes.formControl}>
+                                </FormControl>
+
+                                <FormControl className={classes.formControl}>
                                     <InputLabel htmlFor="select-multiple-checkbox">Artists</InputLabel>
                                     <Select
                                         multiple
@@ -171,15 +172,15 @@ class Home extends Component {
 
                                 <FormControl className={classes.formControl}>
 
-                                <TextField
+                                    <TextField
 
-                                id = "releaseDateStart"
-                                label = "Release Date Start"
-                                type = "date"
-                                defaultValue =""
-                                InputLabelProps ={{shrink:true}}/ >
+                                        id="releaseDateStart"
+                                        label="Release Date Start"
+                                        type="date"
+                                        defaultValue=""
+                                        InputLabelProps={{ shrink: true }} />
 
-                               
+
                                 </FormControl>
 
                                 <FormControl className={classes.formControl}>
@@ -191,18 +192,27 @@ class Home extends Component {
                                         InputLabelProps={{ shrink: true }}
                                     />
                                 </FormControl>
-                            
-                            
-                            </CardContent>                    
+
+
+                                <br />
+                                <br />
+                                <FormControl className={classes.formControl}>
+                                    <Button variant="contained" color="primary">
+                                        APPLY
+                                    </Button>
+                                </FormControl>
+
+
+                            </CardContent>
                         </Card>
 
                     </div>
 
-            </div>
-
-
                 </div>
-                )
-            }
-        }
+
+
+            </div>
+        )
+    }
+}
 export default withStyles(styles)(Home);
