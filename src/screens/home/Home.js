@@ -17,6 +17,8 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import  Checkbox  from '@material-ui/core/Checkbox';
 import ListItemText from '@material-ui/core/ListItemText';
+import artists from '../../common/artists';
+import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
     root: {
@@ -55,7 +57,8 @@ class Home extends Component {
         super();
         this.state = {
             movieName: "",
-            genres: []
+            genres: [],
+            artists: []
         }
 
     }
@@ -65,6 +68,9 @@ class Home extends Component {
 
     genreSelectHandler = event =>{
         this.setState({ genres: event.target.value });
+    }
+    artistSelectHandler = event => {
+        this.setState({ artists: event.target.value });
     }
 
 
@@ -126,7 +132,7 @@ class Home extends Component {
 
                                     <Select
                                         multiple
-                                        input={<Input id="select-multiple-checkbox" />}
+                                        input={<Input id="select-multiple-checkbox-genre" />}
                                         renderValue={selected => selected.join(',')}
                                         value={this.state.genres}
                                         onChange={this.genreSelectHandler} >
@@ -142,7 +148,49 @@ class Home extends Component {
                                      </Select>   
 
 
-                               </FormControl>      
+                               </FormControl>     
+                               
+                               <FormControl className={classes.formControl}>
+                                    <InputLabel htmlFor="select-multiple-checkbox">Artists</InputLabel>
+                                    <Select
+                                        multiple
+                                        input={<Input id="select-multiple-checkbox" />}
+                                        renderValue={selected => selected.join(',')}
+                                        value={this.state.artists}
+                                        onChange={this.artistSelectHandler}
+                                    >
+                                        <MenuItem value="0">None</MenuItem>
+                                        {artists.map(artist => (
+                                            <MenuItem key={artist.id} value={artist.first_name + " " + artist.last_name}>
+                                                <Checkbox checked={this.state.artists.indexOf(artist.first_name + " " + artist.last_name) > -1} />
+                                                <ListItemText primary={artist.first_name + " " + artist.last_name} />
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+
+                                <FormControl className={classes.formControl}>
+
+                                <TextField
+
+                                id = "releaseDateStart"
+                                label = "Release Date Start"
+                                type = "date"
+                                defaultValue =""
+                                InputLabelProps ={{shrink:true}}/ >
+
+                                <br />
+                                
+                                <TextField
+
+                                id = "releaseDateStart2"
+                                label = "Release Date Start 2"
+                                type = "date"
+                                defaultValue =""
+                                InputLabelProps ={{shrink:true}}/ >
+
+                                </FormControl>
+                            
                             
                             </CardContent>                    
                         </Card>
