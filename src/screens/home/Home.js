@@ -179,16 +179,17 @@ class Home extends Component {
                                 defaultValue =""
                                 InputLabelProps ={{shrink:true}}/ >
 
-                                <br />
-                                
-                                <TextField
+                               
+                                </FormControl>
 
-                                id = "releaseDateStart2"
-                                label = "Release Date Start 2"
-                                type = "date"
-                                defaultValue =""
-                                InputLabelProps ={{shrink:true}}/ >
-
+                                <FormControl className={classes.formControl}>
+                                    <TextField
+                                        id="releaseDateEnd"
+                                        label="Release Date End"
+                                        type="date"
+                                        defaultValue=""
+                                        InputLabelProps={{ shrink: true }}
+                                    />
                                 </FormControl>
                             
                             
