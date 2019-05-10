@@ -7,6 +7,10 @@
  .login-button {
     float: right;
 } 
+.bookshow-button{
+    float: right;
+    margin-right: 20px;
+}
 .app-logo {
     animation: app-logo-spin infinite 8s linear;
     height: 35px;
