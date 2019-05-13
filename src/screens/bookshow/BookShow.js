@@ -16,6 +16,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import Select from '@material-ui/core/Select';
 import  MenuItem from '@material-ui/core/MenuItem';
+import { Button } from '@material-ui/core';
 
 class BookShow extends Component {
 
@@ -137,8 +138,11 @@ class BookShow extends Component {
                         <FormControl required className="formControl">
                         <InputLabel htmlFor="tickets">Tickets:{this.state.availableTickets} available</InputLabel>
                         <Input id= "tickets" value = {this.state.tickets  !==  0  ? this.state.tickets: ""} onChange={this.ticketsChangeHandler}></Input>
-                        </FormControl>
+                        </FormControl><br /><br />
 
+                        <Typography>Unit Price in Rs: {this.state.unitPrice}</Typography><br />
+                        <Typography>Total Price in Rs: {this.state.unitPrice * this.state.tickets}</Typography>
+                         <Button variant ="contained" color="primary" onClick = {this.bookShowButtonHandler}>Book Show</Button>
 
                         </CardContent>
                     </Card>
